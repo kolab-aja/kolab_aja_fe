@@ -18,7 +18,7 @@
                     <h2>Dokumen Lainnya</h2>
                     <template v-if="props.data.design_brief_lokasi_dokumen">
                         <v-icon left>mdi-paperclip</v-icon>
-                        <a :href="'https://rest.kolabaja.cloud/' + props.data.design_brief_lokasi_dokumen"
+                        <a :href="backendUrl + props.data.design_brief_lokasi_dokumen"
                             target="_blank" rel="noopener noreferrer" class="v-btn v-btn--icon">
                             Dokumen
                         </a>
@@ -88,6 +88,7 @@ import { useProjectStore } from '@/store/project';
 
 const projectStore = useProjectStore();
 const pembayaran = ref({});
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const props = defineProps({
     data: {
