@@ -45,7 +45,7 @@
 				<TheVCol cols="12" style="margin-top: 30px">
 					<h3>Dokumen Lainnya</h3>
 					<div class="d-flex align-center">
-						<a :href="`https://rest.kolabaja.cloud/${detailProject.proyek?.lokasi_dokumen}`">Dokumen</a>
+						<a :href="`${backendUrl}/${detailProject.proyek?.lokasi_dokumen}`">Dokumen</a>
 					</div>
 				</TheVCol>
 
@@ -109,6 +109,7 @@ import { useProjectStore } from '@/store/project';
 import { useSnackbarStore } from '@/store/snackbar';
 import {useProfileStore} from "@/store/profile";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const detailProject = ref({ proyek: {}, lamaran_proyek: [] });
 const router = useRouter();
 const route = useRoute();
