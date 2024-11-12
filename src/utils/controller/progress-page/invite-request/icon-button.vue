@@ -33,7 +33,7 @@
                     <div>
                         <h3 style="color: #221943;">Dokumen Pendukung</h3>
                         <v-icon left>mdi-paperclip</v-icon>
-                        <a :href="`https://rest.kolabaja.cloud/${props.data.proyek_lokasi_dokumen}`" target="_blank" style="color: #8A76D4; text-decoration: none;">Dokumen</a>
+                        <a :href="`${backendUrl}/${props.data.proyek_lokasi_dokumen}`" target="_blank" style="color: #8A76D4; text-decoration: none;">Dokumen</a>
                     </div>
                         
                 </v-container>
@@ -48,6 +48,7 @@ import profileImage from '@/assets/images/let-him-cook.jpg';
 import TheButton from '@/components/common/TheButton.vue';
 import TheVRow from '@/components/common/TheVRow.vue';
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const props = defineProps({
     data: {
         type: Object,
