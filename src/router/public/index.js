@@ -51,7 +51,7 @@ const publicRoute = [
 	},
 	{
 		path: "/forgot-password",
-		name: "ForfotPassPage",
+		name: "ForgotPassPage",
 		component: ForgotPassPage,
 	},
 ];
