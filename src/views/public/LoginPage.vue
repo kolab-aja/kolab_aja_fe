@@ -38,7 +38,7 @@
 							</template>
 						</TheFieldInput>
 						<div class="text-right mb-4">
-							<a href="#" class="forgot-password"
+							<a href="/forgot-password" class="forgot-password"
 								>Lupa Password?</a
 							>
 						</div>
