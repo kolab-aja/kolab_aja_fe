@@ -185,6 +185,7 @@ const handleSubmit = () => {
 	font-size: 2.5rem;
 	font-weight: bold;
 	width: 100%;
+	text-align: center;
 }
 
 .sign-in-button {
@@ -250,5 +251,31 @@ const handleSubmit = () => {
 .text-caption {
 	margin-top: -10px;
 	font-size: 1rem !important;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 600px) {
+	.form-card {
+		padding: 16px;
+		width: 90%;
+	}
+
+	.sign-in-text {
+		font-size: 1.75rem;
+	}
+
+	.append-icon {
+		right: 8px;
+	}
+
+	.sign-up-button {
+		width: 100%;
+		font-size: 1rem;
+		padding: 12px 0;
+	}
+
+	.text-caption {
+		font-size: 0.875rem !important;
+	}
 }
 </style>
