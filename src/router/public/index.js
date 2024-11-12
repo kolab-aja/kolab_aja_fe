@@ -7,6 +7,7 @@ import LoginPage from "@/views/public/LoginPage.vue";
 
 import BlockLogin from "@/middleware/BlockLogin";
 import DirectLogout from "@/middleware/DirectLogout";
+import ForgotPassPage from "@/views/public/ForgotPassPage.vue";
 
 const publicRoute = [
 	{
@@ -47,6 +48,11 @@ const publicRoute = [
 		path: "/not-found",
 		name: "notfound",
 		component: NotFoundPage,
+	},
+	{
+		path: "/forgot-password",
+		name: "ForgotPassPage",
+		component: ForgotPassPage,
 	},
 ];
 
