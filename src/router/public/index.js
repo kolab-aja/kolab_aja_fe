@@ -8,6 +8,7 @@ import LoginPage from "@/views/public/LoginPage.vue";
 import BlockLogin from "@/middleware/BlockLogin";
 import DirectLogout from "@/middleware/DirectLogout";
 import ForgotPassPage from "@/views/public/ForgotPassPage.vue";
+import ResetPasswordPage from "@/views/public/ResetPasswordPage.vue";
 
 const publicRoute = [
 	{
@@ -54,6 +55,11 @@ const publicRoute = [
 		name: "ForgotPassPage",
 		component: ForgotPassPage,
 	},
+	{
+		path: "/reset-password",
+		name: "ResetPassword",
+		component: ResetPasswordPage
+	}
 ];
 
 export default publicRoute;
