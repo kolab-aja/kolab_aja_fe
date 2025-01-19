@@ -16,7 +16,7 @@ console.log(statusIsi);
         next(`/${authStore.userRoles}/edit-account`)
 
         return true
-    } else if (statusIsi == 1 && to.path != `/${authStore.userRoles}/edit-profile` || (authStore.userRoles == 'creative-hub-team' && profileStore.data.data_pengguna.status_ganti_password == 1)) {
+    } else if (statusIsi == 1 && to.path != `/${authStore.userRoles}/edit-profile` && (authStore.userRoles == 'creative-hub-team' && profileStore.data.data_pengguna.status_ganti_password == 1)) {
         next(`/${authStore.userRoles}/edit-profile`)
         return true
 
