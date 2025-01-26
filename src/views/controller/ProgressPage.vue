@@ -71,14 +71,14 @@ const FetchTableData = async () => {
 	try {
 		await projectListStore.getProjectList();
 		inviteRequestItems.value = projectListStore.data.setup.filter(project => {
-			return project.proyek_id_status_proyek === "1" && project.controller_nama === null
+			return project.proyek_id_status_proyek == "1" && project.controller_nama === null
 		})
 		;
 		projectSetupItems.value = projectListStore.data.setup.filter(project =>
-			project.proyek_id_status_proyek === "1" || project.proyek_id_status_proyek === "2" || project.proyek_id_status_proyek === "3"
+			project.proyek_id_status_proyek == "1" || project.proyek_id_status_proyek == "2" || project.proyek_id_status_proyek == "3"
 		);
 		projectOnGoing.value = projectListStore.data.setup.filter(project =>
-			project.proyek_id_status_proyek === "4"
+			project.proyek_id_status_proyek == "4"
 		);
 	} catch (error) {}
 }
