@@ -47,6 +47,8 @@
 							custom-label="Nomor Telepon"
 							v-model="telepon"
 							:error-messages="errorPhoneNumber"
+							@keypress="isNumber($event)"
+							maxlength="15"
 						/>
 						<TheInputDropDown
 							:result="controllerFee"
@@ -236,6 +238,15 @@ const handleSubmit = async () => {
 const handleBatal = () => {
 	router.push(`/controller/profile`);
 };
+
+function isNumber (event) {
+	const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let keyPressed = event.key;
+
+	if (!keysAllowed.includes(keyPressed)) {
+		event.preventDefault()
+	}
+}
 
 watch(
 	[nama, telepon, controllerFee, expertise],

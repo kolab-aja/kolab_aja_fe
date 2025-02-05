@@ -32,7 +32,7 @@
 					</TheVCol>
 				</v-col>
 				<v-col cols="12" md="12">
-					<TheInput custom-label="Nomor Telepon" v-model="telepon" :error-messages="errorTelepon"></TheInput>
+					<TheInput custom-label="Nomor Telepon" v-model="telepon" :error-messages="errorTelepon" @keypress="isNumber($event)" maxlength="15"></TheInput>
 				</v-col>
 			</TheVRow>
 			<v-row cols="12">
@@ -124,6 +124,15 @@ const handleClickForgotPassword = () => {
 const back = () => {
 	router.push('/creative-hub-team/account');
 };
+
+function isNumber (event) {
+	const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let keyPressed = event.key;
+
+	if (!keysAllowed.includes(keyPressed)) {
+		event.preventDefault()
+	}
+}
 </script>
 
 <style scoped>

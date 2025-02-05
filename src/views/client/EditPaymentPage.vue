@@ -11,6 +11,9 @@
                     append-inner-icon="mdi-lock-outline"
                     v-model="nomorKartu"
                     :error-messages="errorNomorKartu"
+					minlength="15"
+					maxlength="16"
+					@keypress="isNumber($event)"
                 />
 
                 <TheVRow class="d-flex align-end ga-5" max-width="800">
@@ -21,9 +24,9 @@
                 <TheVRow class="d-flex align-end ga-5" max-width="800">
                     <TheVRow class="d-flex align-end ga-5" max-width="390">
                         <TheInputNumber custom-label="Habis Berlaku" placeholder="MM" v-model="mm" :error-messages="errorMM" :min="1" :max="12" />
-                        <TheInputNumber placeholder="YYYY" v-model="yy" :error-messages="errorYY" :min="1" />
+                        <TheInputNumber placeholder="YYYY" v-model="yy" :error-messages="errorYY" :min="1" :max="new Date().getFullYear()" />
                     </TheVRow>
-                    <TheInput custom-label="CVV" max-width="390" v-model="cvv" :error-messages="errorCVV" />
+                    <TheInput custom-label="CVV" max-width="390" v-model="cvv" :error-messages="errorCVV" minlength="3" maxlength="3" @keypress="isNumber($event)"/>
                 </TheVRow>
 
                 <div v-if="statusIsi == 2">
@@ -117,6 +120,15 @@
             errorCVV.value = ""
         }
     }
+
+	function isNumber (event) {
+		const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		let keyPressed = event.key;
+
+		if (!keysAllowed.includes(keyPressed)) {
+			event.preventDefault()
+		}
+	}
 
     const handleBack = () => {
         router.push("/client/payment")

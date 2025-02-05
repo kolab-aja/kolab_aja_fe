@@ -19,12 +19,15 @@
 						custom-label="Nomor Rekening"
 						v-model="nomorRekening"
 						:error-messages="errorNomorRekening"
+						:disabled="!bank"
+						@keypress="isNumber($event)"
 					/>
 					<TheInput
 						max-width="800"
 						custom-label="Nama Pemilik"
 						v-model="namaPemilik"
 						:error-messages="errorNamaPemilik"
+						:disabled="!bank"
 					/>
 				</div>
 
@@ -178,6 +181,15 @@ const handleSubmit = async () => {
 const handleBatal = () => {
 	router.push("/creative-hub-team/payment");
 };
+
+function isNumber (event) {
+	const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let keyPressed = event.key;
+
+	if (!keysAllowed.includes(keyPressed)) {
+		event.preventDefault()
+	}
+}
 </script>
 
 <style scoped></style>

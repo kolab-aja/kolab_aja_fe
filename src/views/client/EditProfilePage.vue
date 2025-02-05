@@ -17,7 +17,7 @@
                     <div>
                         <TheInput max-width="800" custom-label="Nama" v-model="name" :error-messages="errorName" />
                         <TheInput max-width="800" custom-label="Alamat Email" disabled v-model="email" />
-                        <TheInput max-width="800" custom-label="Nomor Telepon" v-model="phoneNumber" :error-messages="errorPhoneNumber" />
+                        <TheInput max-width="800" custom-label="Nomor Telepon" v-model="phoneNumber" :error-messages="errorPhoneNumber" @keypress="isNumber($event)" maxlength="15"/>
                     </div>
 
                     <TheVCol md="8"><v-divider/></TheVCol>
@@ -25,13 +25,13 @@
                     <h2 style="font-size: 20px; font-family: 500;">Informasi Lokasi</h2>
 
                     <div>
-                        <TheInput max-width="800" custom-label="Wilayah" v-model="wilayah" :error-messages="errorWilayah" placeholder="Format : Kota, Provinsi" />
-                        <TheInput max-width="800" custom-label="Alamat" v-model="alamat" :error-messages="errorAlamat" />
+                        <TheInput max-width="800" custom-label="Wilayah" v-model="wilayah" :error-messages="errorWilayah" placeholder="Format : Kota, Provinsi" maxlength="256"/>
+                        <TheInput max-width="800" custom-label="Alamat" v-model="alamat" :error-messages="errorAlamat" maxlength="256"/>
                     </div>
 
                     <div v-if="statusIsi == 1">
                         <TheButton size="m" type="primary" button-type="submit" @click="handleClickSubmit" :disabled="disabledButtonSubmit">Simpan</TheButton>
-                    </div>                    
+                    </div>
                     <TheVRow class="d-flex ga-5" v-else>
                         <TheButton size="m" type="primary" button-type="submit" @click="handleClickSubmit">Simpan</TheButton>
                         <TheButton size="m" type="secondary" @click="handleBatal" >Batal</TheButton>
@@ -151,8 +151,17 @@
     const handleBatal = () => {
         router.push("/client/profile")
     }
-    
-    watch([name, phoneNumber, wilayah, alamat], ([newName, newPhoneNumber, newWilayah, newAlamat], [oldName, oldPhoneNumber, oldWilayah, oldAlamat]) => {
+
+	function isNumber (event) {
+		const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+		let keyPressed = event.key;
+
+		if (!keysAllowed.includes(keyPressed)) {
+			event.preventDefault()
+		}
+	}
+
+	watch([name, phoneNumber, wilayah, alamat], ([newName, newPhoneNumber, newWilayah, newAlamat], [oldName, oldPhoneNumber, oldWilayah, oldAlamat]) => {
         if ( newName && newPhoneNumber && newWilayah && newAlamat ) {
             disabledButtonSubmit.value = false
         } else {

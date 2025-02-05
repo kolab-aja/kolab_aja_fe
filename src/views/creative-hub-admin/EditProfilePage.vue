@@ -40,7 +40,7 @@
 						<TheInput v-model="dataPengguna.website" custom-label="Website"></TheInput>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.nomor_telepon" custom-label="Nomor Telepon"></TheInput>
+						<TheInput v-model="dataPengguna.nomor_telepon" custom-label="Nomor Telepon"  @keypress="isNumber($event)" maxlength="15"></TheInput>
 					</v-col>
 				</v-row>
 
@@ -116,6 +116,15 @@ const saveProfile = async () => {
 		});
 	}
 };
+
+function isNumber (event) {
+	const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let keyPressed = event.key;
+
+	if (!keysAllowed.includes(keyPressed)) {
+		event.preventDefault()
+	}
+}
 </script>
 
 <style scoped>
