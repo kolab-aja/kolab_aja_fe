@@ -109,7 +109,6 @@ const saveProfile = async () => {
 		});
 		router.push('/creative-hub-admin/profile');
 	} catch (error) {
-		console.error('Error updating profile');
 		snackbarStore.showSnackbar({
 			message: "Error updating profile",
 			timeout: 5000,

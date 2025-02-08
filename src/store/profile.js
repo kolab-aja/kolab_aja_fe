@@ -21,7 +21,6 @@ export const useProfileStore = defineStore("profile", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -35,7 +34,6 @@ export const useProfileStore = defineStore("profile", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error updateProfile in:", error);
                 throw error;
             }
         },
@@ -48,7 +46,6 @@ export const useProfileStore = defineStore("profile", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         }

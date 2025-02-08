@@ -20,7 +20,6 @@ export const useControllerDesignBrief = defineStore("controllerDesignBrief", {
                 this.isLoading = false;
             } catch {
                 this.isLoading = false;
-                console.error("Error updateControllerDesignBrief in :", error);
                 throw error;
             }
         }

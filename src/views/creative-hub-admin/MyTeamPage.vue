@@ -99,7 +99,6 @@ async function addTeam() {
 			Action: item.status_ganti_password === "1" ? 1 : 0,
 		}));
 	} catch (error) {
-		console.error('Failed to add team:', error);
 	}
 }
 

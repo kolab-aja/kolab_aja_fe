@@ -236,7 +236,6 @@ const handlePublishButtonClick = () => {
 	} else if ( parseInt(persentase.value) == 0 ) {
 		errorPersentase.value = "Persentase tidak boleh 0"
 	} else if ( parseInt(persentase.value) + parseInt(mileStoneData.value.milestone_persentase) > 100 ) {
-		console.log(parseInt(mileStoneData.value.milestone_persentase))
 		const maksPersentase = 100 - parseInt(mileStoneData.value.milestone_persentase)
 		errorPersentase.value = `Persentase hanya bisa maksimal ${ maksPersentase } %`
 	} else {

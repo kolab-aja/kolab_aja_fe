@@ -30,7 +30,6 @@ export const useAuthStore = defineStore("auth", {
 				localStorage.setItem("jwt_token", `Bearer ${this.token}`);
 				await this.getUserRoles();
 			} catch (error) {
-				console.error("Error POST Login :", error);
 				throw error;
 			}
 		},
@@ -46,7 +45,6 @@ export const useAuthStore = defineStore("auth", {
 				localStorage.setItem("id", this.id);
 				localStorage.setItem("name", this.name);
 			} catch (error) {
-				console.error("Error POST getme :", error);
 				throw error;
 			}
 		},
@@ -66,7 +64,6 @@ export const useAuthStore = defineStore("auth", {
 				localStorage.setItem("jwt_token", `Bearer ${this.token}`);
 				await this.getUserRoles();
 			} catch (error) {
-                console.error("Error POST register :", error);
 				throw error;
             }
 		},

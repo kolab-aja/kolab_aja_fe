@@ -132,7 +132,7 @@ onMounted(async () => {
         expertiseOptions.value = profileStore.data.spesialisasi.map(item => item.nama) || [];
         isLoading.value = profileStore.isLoading;
     } catch (error) {
-        console.error('Failed to fetch profile data:', error);
+
     } finally {
         isLoading.value = false;
     }
@@ -162,7 +162,6 @@ const simpan = async () => {
         router.push(`/creative-hub-team/profile`)
 
     } catch (error) {
-        console.error('Failed to save data:', error);
         snackbarStore.showSnackbar({
             message: error.response.data.errors,
             timeout: 5000,

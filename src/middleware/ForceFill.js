@@ -11,7 +11,7 @@ export default async function ForceFill(to, from, next) {
     }
 
     let statusIsi = profileStore.data.data_pengguna.id_status_pengguna;
-console.log(statusIsi);
+
     if (authStore.userRoles == 'creative-hub-team' && profileStore.data.data_pengguna.status_ganti_password == 0 && to.path != `/${authStore.userRoles}/edit-account`) {
         next(`/${authStore.userRoles}/edit-account`)
 

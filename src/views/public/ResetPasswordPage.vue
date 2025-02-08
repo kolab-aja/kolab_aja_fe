@@ -106,11 +106,6 @@ const handleSubmit = () => {
 	} else {
 		errorConfirmPassword.value = "";
 	}
-
-	if (errorNewPassword.value === "" && errorConfirmPassword.value === "") {
-		// Simulate a submit action
-		console.log("Password berhasil direset");
-	}
 };
 </script>
 

@@ -78,7 +78,6 @@ onMounted(async () => {
 		statusGantiPassword.value = profileStore.data.data_pengguna.status_ganti_password || 0;
 		loading.value = false;
 	} catch (error) {
-		console.error('Failed to fetch profile data:', error);
 		loading.value = false;
 	}
 });

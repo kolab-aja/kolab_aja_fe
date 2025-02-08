@@ -56,8 +56,6 @@ const handleSubmit = () => {
 		errorEmail.value = "Email tidak valid";
 	} else {
 		errorEmail.value = "";
-		// Simulate a submit action
-		console.log("Link reset password telah dikirim ke:", email.value);
 	}
 };
 </script>

@@ -18,7 +18,6 @@ export const useControllerMilestone = defineStore("controllerMilestone", {
                 this.data = response
             } catch (error) {
                 this.isLoading = false;
-                console.error("Error getControllerMilestone in :", error);
                 throw error;
             }
         },
@@ -37,7 +36,6 @@ export const useControllerMilestone = defineStore("controllerMilestone", {
                 })
             } catch (error) {
                 this.isLoading = false;
-                console.error("Error controllerTambahMilestone in :", error);
                 throw error;
             }
         }

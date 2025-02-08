@@ -20,7 +20,6 @@ export const useControllerListStore = defineStore("controllerList", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },

@@ -18,7 +18,6 @@ export const useClientBillingStore = defineStore("clientBilling", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error get Client Billing in:", error);
                 throw error;
             }
         },
@@ -39,7 +38,6 @@ export const useClientBillingStore = defineStore("clientBilling", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error update ClientBilling in:", error);
                 throw error;
             }
         },

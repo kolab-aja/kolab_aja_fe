@@ -21,7 +21,6 @@ export const useMemberStore = defineStore("member", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error getMember in:", error);
 				throw error;
 			}
 		},
@@ -32,7 +31,6 @@ export const useMemberStore = defineStore("member", {
 					data: memberData,
 				});
 			} catch (error) {
-				console.error("Error inserting member:", error);
 				throw error;
 			}
 		},
@@ -45,7 +43,6 @@ export const useMemberStore = defineStore("member", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error deleteMember in:", error);
 				throw error;
 			}
 		},
@@ -56,7 +53,6 @@ export const useMemberStore = defineStore("member", {
 					data: memberData
 				})
 			} catch (error) {
-				console.error("Error updateMember in:", error);
 				throw error;
 			}
 		},
@@ -68,7 +64,6 @@ export const useMemberStore = defineStore("member", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error getMember in:", error);
 				throw error;
 			}
 		},

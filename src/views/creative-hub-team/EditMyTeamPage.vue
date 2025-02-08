@@ -175,7 +175,6 @@ onMounted(async () => {
 			value: item.nama
 		}));
 	} catch (error) {
-		console.error('Failed to fetch data:', error);
 	}
 });
 
@@ -255,7 +254,6 @@ const addMember = async () => {
 		dialog.value = false;
 		resetDialogForm();
 	} catch (error) {
-		console.error("Gagal menambahkan member:", error);
 		snackbarStore.showSnackbar({
 			message: `Gagal menambahkan member: ${error.response?.data?.message || "Terjadi kesalahan pada server"}`,
 			timeout: 5000,

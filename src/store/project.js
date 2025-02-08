@@ -1,12 +1,14 @@
 import { defineStore } from "pinia";
 import fetchApi from "@/lib/api/fetchApi";
 import { useAuthStore } from "./auth";
+import InviteRequest from "@/utils/controller/progress-page/invite-request/invite-request.vue";
 
 export const useProjectStore = defineStore("project", {
     state: () => ({
         data: null,
         isLoading: false,
-        dataProjectDetail: null
+        dataProjectDetail: null,
+        inviteRequestData: null
     }),
     getters: {
 
@@ -25,10 +27,8 @@ export const useProjectStore = defineStore("project", {
                 })
                 this.data = response
                 this.isLoading = false
-                console.log(response)
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -41,10 +41,8 @@ export const useProjectStore = defineStore("project", {
                     data: data
                 })
                 this.isLoading = false
-                console.log(response)
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -63,7 +61,6 @@ export const useProjectStore = defineStore("project", {
                 return response
             } catch(error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -81,7 +78,6 @@ export const useProjectStore = defineStore("project", {
                 return response
             } catch(error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -99,7 +95,6 @@ export const useProjectStore = defineStore("project", {
                 return response
             } catch(error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -112,7 +107,6 @@ export const useProjectStore = defineStore("project", {
                 this.dataProjectDetail = response
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -125,7 +119,6 @@ export const useProjectStore = defineStore("project", {
                 return response
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -138,9 +131,20 @@ export const useProjectStore = defineStore("project", {
                 return response
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
-        }
+        },
+        async getProjectDetail(id) {
+            try {
+                const response = await fetchApi(`/api/invite-request`, {
+                    method: 'GET'
+                })
+    
+                this.inviteRequestData = response
+            } catch (error) {
+                this.isLoading = false
+                throw error;
+            }
+        },
     }
 })

@@ -20,7 +20,6 @@ export const useMilestoneListStore = defineStore("milestoneList", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error get milestone in:", error);
                 throw error;
             }
         },
@@ -36,7 +35,6 @@ export const useMilestoneListStore = defineStore("milestoneList", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error get milestone in:", error);
 				throw error;
 			}
 		},
@@ -52,7 +50,6 @@ export const useMilestoneListStore = defineStore("milestoneList", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error get milestone in:", error);
 				throw error;
 			}
 		},
@@ -68,7 +65,6 @@ export const useMilestoneListStore = defineStore("milestoneList", {
 				this.isLoading = false
 			} catch (error) {
 				this.isLoading = false
-				console.error("Error get milestone in:", error);
 				throw error;
 			}
 		},

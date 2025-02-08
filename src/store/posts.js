@@ -19,9 +19,7 @@ export const usePostinganStore = defineStore("postingan", {
                     }
                 });
                 this.postingan = response.data
-                console.log(response.data);
             } catch (error) {
-                console.error("Error logging in:", error);
                 throw error;
             }
         },
@@ -36,10 +34,8 @@ export const usePostinganStore = defineStore("postingan", {
                         Authorization: `Bearer ${this.token}`
                     }
                 });
-                console.log(response.data);
                 return true;
             } catch (error) {
-                console.error("Error setting posting:", error);
                 throw error;
             }
         }
