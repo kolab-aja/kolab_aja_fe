@@ -158,8 +158,6 @@ onMounted(async () => {
 
 	const dataProjectDetail = projectStore.dataProjectDetail;
 
-	console.table(dataProjectDetail);
-
 	dataDetail.value = dataProjectDetail;
 
 	// Parse spesialisasi for both controller and project

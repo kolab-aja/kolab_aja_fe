@@ -18,7 +18,6 @@ export const useBillStore = defineStore("bill", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
@@ -30,7 +29,6 @@ export const useBillStore = defineStore("bill", {
                     data: data
                 })
             } catch (error) {
-                console.error("Error updateProfile in:", error);
                 throw error;
             }
         },

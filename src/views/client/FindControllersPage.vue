@@ -6,7 +6,7 @@
 				<h2 style="color: white; font-size: 35px">Rekomendasi Controllers</h2>
 				<TheVCol class="d-flex align-center justify-center ga-3 mt-3">
 					<TheVCol max-width="800">
-						<TheInput prepend-inner-icon="mdi-search-web" placeholder="Cari project" bg-color="white"
+						<TheInput prepend-inner-icon="mdi-search-web" placeholder="Cari controller	" bg-color="white"
 							v-model="keyword" style="height: 50px" />
 					</TheVCol>
 					<TheButton size="s" type="primary" @click="filterAction()" style="width: 90px">Cari</TheButton>

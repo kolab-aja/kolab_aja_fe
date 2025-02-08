@@ -32,7 +32,7 @@ router.beforeEach(async (to, from, next) => {
     if (middleware) {
         for (let i = 0; i < middleware.length; i++) {
             let currentMiddleware = middleware[i];
-            console.log(`PATH : ${to.path} | MIDDLEWARE : ${currentMiddleware.funcName.name} | PARAM : ${currentMiddleware.param}`);
+            // console.log(`PATH : ${to.path} | MIDDLEWARE : ${currentMiddleware.funcName.name} | PARAM : ${currentMiddleware.param}`);
             nextIsCalled = await currentMiddleware.funcName(to, from, next, currentMiddleware.param);
             if ( nextIsCalled ) {
                 break;

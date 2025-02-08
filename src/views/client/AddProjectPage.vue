@@ -47,7 +47,7 @@
 				<v-card class="px-10 py-10 mb-15" variant="flat">
 					<v-card-title>4. Dokumentasi Lainnya</v-card-title>
 					<v-card-text>
-						<p>Dokumen Pendukung</p>
+						<p>Dokumen Pendukung, file yang di dukung (jpeg, jpg, png, doc, docx, pdf, xls, xlsx, zip)</p>
 						<v-file-input label="Drag your files here or browse" v-model="projectFiles" variant="outlined"
 							class="v-file-input mt-4" clearable show-size multiple required />
 					</v-card-text>
@@ -115,8 +115,7 @@ const submitForm = async () => {
 		snackbarStore.showSnackbar({ type: 'success', message: 'Berhasil memasukan project' });
 		resetForm();
 	} catch (error) {
-		console.error('Error submitting form:', error);
-		snackbarStore.showSnackbar({ type: 'error', message: 'Gagal memasukan project' });
+		snackbarStore.showSnackbar({ type: 'error', message: error.data.error | 'Terjadi kesalahan' });
 	}
 };
 

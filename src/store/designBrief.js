@@ -20,7 +20,6 @@ export const useDesignBriefStore = defineStore("designBrief", {
                 this.isLoading = false;
             } catch (error) {
                 this.isLoading = false;
-                console.error("Error getDesignBrief in :", error);
                 throw error;
             }
         }

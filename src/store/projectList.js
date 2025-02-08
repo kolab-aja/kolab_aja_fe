@@ -25,7 +25,6 @@ export const useProjectListStore = defineStore("projectList", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error GET projectList :", error);
                 throw error;
             }
         }

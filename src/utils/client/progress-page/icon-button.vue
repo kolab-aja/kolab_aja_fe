@@ -164,7 +164,6 @@ const fetchPaymentDetails = async () => {
         const data_pembayaran = await projectStore.getBayar(props.data.proyek_id);
         pembayaran.value = data_pembayaran;
     } catch (error) {
-        console.error('Error fetching payment details:', error);
     }
 };
 
@@ -174,7 +173,6 @@ const handleAcceptBrief = async () => {
         briefDialog.value = false;
         window.location.reload();
     } catch (error) {
-        console.error('Error accepting design brief:', error);
     }
 };
 
@@ -188,7 +186,6 @@ const handleBayarPayment = async () => {
         paymentDialog.value = false;
         window.location.reload(); // Refresh the page after payment
     } catch (error) {
-        console.error('Error processing payment:', error);
     }
 };
 

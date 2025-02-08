@@ -126,7 +126,6 @@ onMounted(async () => {
 			detailProject.value.proyek.spesialisasi = JSON.parse(detailProject.value.proyek.spesialisasi);
 		}
 	} catch (error) {
-		console.error('Failed to fetch project details', error);
 	}
 });
 

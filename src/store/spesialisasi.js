@@ -18,7 +18,6 @@ export const useSpesialisasiStore = defineStore("spesialisasi", {
                 this.isLoading = false
             } catch (error) {
                 this.isLoading = false
-                console.error("Error getProfile in:", error);
                 throw error;
             }
         },
