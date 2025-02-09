@@ -55,11 +55,6 @@ const headers = [
 async function updateStatusTerimaProject(id_project, status_terima_proyek)
 {
     await projectStore.updateInviteRequest(id_project, status_terima_proyek);
-    snackbarStore.showSnackbar({
-			type: "success",
-			message: "Project berhasil di" + status_terima_proyek ? 'terima' : 'tolak',
-			timeout: 5000,
-		});
     location.reload();
 }
 
