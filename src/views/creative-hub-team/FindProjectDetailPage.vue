@@ -70,7 +70,7 @@
 					<div class="d-flex ga-1 mt-3 align-center">
 						<v-icon icon="mdi-attachment"></v-icon>
 						<p style="color: #221943; font-weight: 400">
-							<a :href="backendUrl + dataDetail.proyek.lokasi_dokumen"
+							<a :href="backendUrl + '/' + dataDetail.proyek.lokasi_dokumen"
 								target="_blank">Download Dokumen</a>
 						</p>
 					</div>
