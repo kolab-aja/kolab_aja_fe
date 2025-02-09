@@ -19,6 +19,8 @@
 						custom-label="Nomor Rekening"
 						v-model="nomorRekening"
 						:error-messages="errorNomorRekening"
+						minlength="10"
+						maxlength="10"
 						:disabled="!bank"
 						@keypress="isNumber($event)"
 					/>

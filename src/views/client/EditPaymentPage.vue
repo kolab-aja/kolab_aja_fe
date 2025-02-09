@@ -24,7 +24,7 @@
                 <TheVRow class="d-flex align-end ga-5" max-width="800">
                     <TheVRow class="d-flex align-end ga-5" max-width="390">
                         <TheInputNumber custom-label="Habis Berlaku" placeholder="MM" v-model="mm" :error-messages="errorMM" :min="1" :max="12" />
-                        <TheInputNumber placeholder="YYYY" v-model="yy" :error-messages="errorYY" :min="1" :max="new Date().getFullYear()" />
+                        <TheInputNumber placeholder="YYYY" v-model="yy" :error-messages="errorYY" :min="new Date().getFullYear()" :max="new Date().getFullYear() + 100" />
                     </TheVRow>
                     <TheInput custom-label="CVV" max-width="390" v-model="cvv" :error-messages="errorCVV" minlength="3" maxlength="3" @keypress="isNumber($event)"/>
                 </TheVRow>

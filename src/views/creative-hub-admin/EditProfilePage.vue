@@ -22,22 +22,22 @@
 						<h3>Informasi Creative Hub</h3>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.nama" custom-label="Nama"></TheInput>
+						<TheFieldInput id="nama" v-model="dataPengguna.nama" label="Nama" :errorMessage="errorNama" required></TheFieldInput>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.lokasi" custom-label="Wilayah"></TheInput>
+						<TheFieldInput id="lokasi" v-model="dataPengguna.lokasi" label="Wilayah" :errorMessage="errorLokasi" required></TheFieldInput>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.email" custom-label="Alamat Email"></TheInput>
+						<TheInput v-model="dataPengguna.email" custom-label="Alamat Email" disabled></TheInput>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.alamat" custom-label="Alamat"></TheInput>
+						<TheFieldInput id="alamat" v-model="dataPengguna.alamat" label="Alamat" :errorMessage="errorAlamat" required></TheFieldInput>
 					</v-col>
 					<v-col cols="12" md="6">
 						<TheInput v-model="dataPengguna.tag_line" custom-label="Tagline"></TheInput>
 					</v-col>
 					<v-col cols="12" md="6">
-						<TheInput v-model="dataPengguna.website" custom-label="Website"></TheInput>
+						<TheFieldInput id="website" v-model="dataPengguna.website" label="Website" :errorMessage="errorWebsite" required></TheFieldInput>
 					</v-col>
 					<v-col cols="12" md="6">
 						<TheInput v-model="dataPengguna.nomor_telepon" custom-label="Nomor Telepon"  @keypress="isNumber($event)" maxlength="15"></TheInput>
@@ -76,6 +76,7 @@ import TheVRow from "@/components/common/TheVRow.vue";
 import TheVCol from "@/components/common/TheVCol.vue";
 import { useProfileStore } from "@/store/profile";
 import { useSnackbarStore } from "@/store/snackbar";
+import TheFieldInput from "@/components/common/auth/TheFieldInput.vue";
 
 const snackbarStore = useSnackbarStore();
 const profileStore = useProfileStore();
@@ -99,15 +100,54 @@ const back = () => {
 	router.push('/creative-hub-admin/profile');
 };
 
+const errorNama = ref("");
+const errorLokasi = ref("");
+const errorAlamat = ref("");
+const errorWebsite = ref("");
+
 const saveProfile = async () => {
 	try {
-		await profileStore.updateProfile(dataPengguna.value);
-		snackbarStore.showSnackbar({
-			type: "success",
-			message: "Data berhasil di update",
-			timeout: 5000,
-		});
-		router.push('/creative-hub-admin/profile');
+		if (!dataPengguna.value.nama) {
+			errorNama.value = "Nama tidak boleh kosong";
+		} else {
+			errorNama.value = "";
+		}
+
+		if (!dataPengguna.value.lokasi) {
+			errorLokasi.value = "Lokasi tidak boleh kosong";
+		} else {
+			errorLokasi.value = "";
+		}
+
+		if (!dataPengguna.value.alamat) {
+			errorAlamat.value = "Alamat tidak boleh kosong";
+		} else {
+			errorAlamat.value = "";
+		}
+
+		if (!dataPengguna.value.website) {
+			errorWebsite.value = "Website tidak boleh kosong";
+		} else {
+			errorWebsite.value = "";
+		}
+
+		// errorNama saat tidak ada valuenya string kosong, pas string kosong maka tidak ada error
+		if (
+			errorNama.value === "" &&
+			errorLokasi.value === "" &&
+			errorAlamat.value === "" &&
+			errorWebsite.value === ""
+		) {
+			await profileStore.updateProfile(dataPengguna.value);
+			snackbarStore.showSnackbar({
+				type: "success",
+				message: "Data berhasil di update",
+				timeout: 5000,
+			});
+			router.push('/creative-hub-admin/profile');
+		} else {
+			throw new Error();
+		}
 	} catch (error) {
 		snackbarStore.showSnackbar({
 			message: "Error updating profile",

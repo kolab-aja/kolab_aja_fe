@@ -27,9 +27,9 @@
 						</v-card-title>
 						<v-divider></v-divider>
 						<v-card-text>
-							<TheInput v-model="form.email" dense label="Email" placeholder="Masukkan Email"></TheInput>
-							<TheInput v-model="form.nama_team" dense label="Nama Team" placeholder="Masukkan Nama Team"></TheInput>
-							<TheInput v-model="form.temp_password" dense label="Temp Password" placeholder="Masukkan Temp Password"></TheInput>
+							<TheFieldInput v-model="form.email" id="email" dense label="Email" placeholder="Masukkan Email" :error-message="errorEmail"></TheFieldInput>
+							<TheFieldInput v-model="form.nama_team" id="nama_team" dense label="Nama Team" placeholder="Masukkan Nama Team" :error-message="errorNama"></TheFieldInput>
+							<TheFieldInput v-model="form.temp_password" id="temp_password" dense label="Temp Password" placeholder="Masukkan Temp Password" :error-message="errorPassword"></TheFieldInput>
 						</v-card-text>
 						<v-divider></v-divider>
 						<v-card-actions>
@@ -75,6 +75,8 @@ import TheButton from "@/components/common/TheButton.vue";
 import TheInput from "@/components/common/TheInput.vue";
 import { onMounted, ref } from "vue";
 import { useTeamStore } from "@/store/team";
+import TheFieldInput from "@/components/common/auth/TheFieldInput.vue";
+import validatePassword from "@/lib/validate/validatePassword";
 
 const addTeamDialog = ref(false);
 const loading = ref(true);
@@ -86,18 +88,47 @@ const form = ref({
 });
 
 const teamStore = useTeamStore();
+const errorEmail = ref("");
+const errorNama = ref("");
+const errorPassword = ref("");
 
 async function addTeam() {
 	try {
-		await teamStore.insertTeam(form.value);
-		addTeamDialog.value = false;
-		await teamStore.getTeam();
-		items.value = (teamStore.data || []).map(item => ({
-			akun: item.email,
-			"Team Name": item.nama,
-			"Temp Password": item.temp_password,
-			Action: item.status_ganti_password === "1" ? 1 : 0,
-		}));
+		if (!form.value.nama_team) {
+			errorNama.value = "Nama tidak boleh kosong";
+		} else {
+			errorNama.value = "";
+		}
+
+		if (!form.value.email) {
+			errorEmail.value = "Email tidak boleh kosong";
+		} else {
+			errorEmail.value = "";
+		}
+
+		if (!form.value.temp_password) {
+			errorPassword.value = "Password tidak boleh kosong";
+		} else if (validatePassword(form.value.temp_password) != "Password valid") {
+			errorPassword.value = validatePassword(form.value.temp_password);
+		} else {
+			errorPassword.value = "";
+		}
+
+		if (
+			errorNama.value === "" &&
+			errorEmail.value === "" &&
+			errorPassword.value === ""
+		) {
+			await teamStore.insertTeam(form.value);
+			addTeamDialog.value = false;
+			await teamStore.getTeam();
+			items.value = (teamStore.data || []).map(item => ({
+				akun: item.email,
+				"Team Name": item.nama,
+				"Temp Password": item.temp_password,
+				Action: item.status_ganti_password === "1" ? 1 : 0,
+			}));
+		}
 	} catch (error) {
 	}
 }
