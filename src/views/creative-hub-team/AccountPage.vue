@@ -51,7 +51,7 @@
 						</v-col>
 						<v-col cols="12">
 							<strong>Password</strong>
-							<div v-if="statusGantiPassword === '1'">*****</div>
+							<div v-if="statusGantiPassword == '1'">*****</div>
 							<div v-else>isi password</div>
 						</v-col>
 						<v-col cols="12">
