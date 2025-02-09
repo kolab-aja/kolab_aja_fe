@@ -1,8 +1,6 @@
 <template>
 	<v-app>
 		<TheSidebar active-at="/controller/progress" navbarTitle="Pengaturan Project">
-
-			<!-- Header Section -->
 			<v-row>
 				<v-col cols="12" md="8">
 					<slot name="center">
@@ -35,14 +33,11 @@
 
 			<v-divider class="custom-divider"></v-divider>
 
-			<!-- Data Table -->
 			<v-tabs-window v-model="activeTab">
 
 				<InviteRequest :list-data="inviteRequestItems"/>
 				<ProjectSetup :fetch-table-data-func="FetchTableData" :list-data="projectSetupItems"/>
 				<onGoing :list-data="projectOnGoing	"/>
-
-
 			</v-tabs-window>
 		</TheSidebar>
 	</v-app>
@@ -71,7 +66,7 @@ const FetchTableData = async () => {
 	try {
 		await projectListStore.getProjectList();
 		inviteRequestItems.value = projectListStore.data.setup.filter(project => {
-			return project.proyek_id_status_proyek == "1" && project.controller_nama === null
+			return project.proyek_id_status_proyek == "1" && project.status_terima_proyek == "0"
 		})
 		;
 		projectSetupItems.value = projectListStore.data.setup.filter(project =>

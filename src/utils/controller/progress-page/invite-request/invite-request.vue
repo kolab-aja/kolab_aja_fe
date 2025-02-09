@@ -16,8 +16,8 @@
                         <IconButton :data="item" />
                     </td>
                     <td>
-                        <TheButton size="icon-m" type="primary-icon-2" icon="mdi-check" :disabled="true" class="mr-1" />
-                        <TheButton size="icon-m" type="primary-icon-2" icon="mdi-close" :disabled="true" />
+                        <TheButton size="icon-m" type="primary-icon-2" icon="mdi-check" :disabled="false" class="mr-1" @click="updateStatusTerimaProject(item.proyek_id,1)"/>
+                        <TheButton size="icon-m" type="primary-icon-2" icon="mdi-close" :disabled="false" @click="updateStatusTerimaProject(item.proyek_id,0)"/>
                     </td>
                 </tr>
             </template>
@@ -30,6 +30,13 @@ import profileImage from '@/assets/images/let-him-cook.jpg';
 import TheButton from '@/components/common/TheButton.vue';
 import defaultImage from '@/assets/images/defaultProfile.png';
 import IconButton from '@/utils/controller/progress-page/invite-request/icon-button.vue';
+import { useProjectStore } from '@/store/project';
+import { useRouter, useRoute } from 'vue-router';
+import { useSnackbarStore } from '@/store/snackbar';
+
+const snackbarStore = useSnackbarStore()
+const projectStore = useProjectStore();
+const router = useRouter();
 
 const props = defineProps({
     listData: {
@@ -44,6 +51,12 @@ const headers = [
     { title: "Undangan" },
     { title: "Action" }
 ]
+
+async function updateStatusTerimaProject(id_project, status_terima_proyek)
+{
+    await projectStore.updateInviteRequest(id_project, status_terima_proyek);
+    location.reload();
+}
 
 </script>
 
