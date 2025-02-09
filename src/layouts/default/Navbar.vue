@@ -1,6 +1,6 @@
 <template>
-	<TheVRow class="navbar d-flex align-center justify-center" :style="{ color: customColor }">
-		<TheVCol class="text-center" cols="11">
+	<TheVRow class="navbar d-flex align-center justify-end" :style="{ color: customColor }">
+		<TheVCol class="text-center">
 			<v-img
 				:src="logoSrc"
 				alt="Kolab Aja Logo"
@@ -8,10 +8,10 @@
 				max-width="10rem"
 			></v-img>
 		</TheVCol>
-		<TheVCol>
-			<div class="d-flex align-center ga-3 justify-center">
+		<TheVCol class="profile-container">
+			<div class="d-flex align-center justify-center">
 				<v-avatar size="36" image="@/assets/images/default-profile-picture.png"></v-avatar>
-				<p>{{ profileStore.data ? profileStore.data.data_pengguna.nama : 'New User' }}</p>
+				<p class="ml-2">{{ profileStore.data ? profileStore.data.data_pengguna.nama : 'New User' }}</p>
 			</div>
 		</TheVCol>
 	</TheVRow>
@@ -20,8 +20,8 @@
 <script setup>
 import TheVRow from "@/components/common/TheVRow.vue";
 import TheVCol from "@/components/common/TheVCol.vue";
-import {useProfileStore} from "@/store/profile";
-import {computed, defineProps} from 'vue';
+import { useProfileStore } from "@/store/profile";
+import { computed, defineProps } from 'vue';
 
 // Define the props for customColor
 const props = defineProps({
@@ -54,14 +54,38 @@ const profileAvatarSrc = computed(() => {
 .navbar {
 	position: fixed;
 	top: 0;
-	left: 0;
+	right: 0;
 	width: 100%;
 	background-color: transparent;
 	padding: 30px 50px;
-	z-index: 1000; /* Make sure navbar is above other content */
+	z-index: 1000; /* Navbar tetap di atas konten lainnya */
+	display: flex;
+	justify-content: flex-end;
+}
+
+.profile-container {
+	display: flex;
+	justify-content: flex-end; /* Memastikan profil berada di pojok kanan */
+	align-items: center;
 }
 
 .content {
-	margin-top: 130px; /* Adjust this value to fit your navbar height */
+	margin-top: 130px; /* Menyesuaikan margin konten agar tidak tertutup navbar */
+}
+
+@media (max-width: 600px) {
+	.navbar {
+		padding: 15px 30px; /* Mengurangi padding untuk perangkat kecil */
+	}
+	.profile-container {
+		justify-content: flex-end;
+	}
+	.text-center p {
+		display: none; /* Menyembunyikan nama pengguna pada perangkat kecil */
+	}
+	.v-avatar {
+		width: 30px;
+		height: 30px; /* Mengurangi ukuran avatar pada perangkat kecil */
+	}
 }
 </style>

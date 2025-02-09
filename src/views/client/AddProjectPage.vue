@@ -54,18 +54,20 @@
 				</v-card>
 			</v-col>
 			<v-col cols="12" md="3" class="form-sidebar">
-				<v-card class="side-desc p-4">
-					<v-col class="d-flex flex-column p-0">
-						<TheButton class="mr-2 mb-2 btn-success" @click="submitForm">Lanjut</TheButton>
-						<TheButton class="mr-2 mb-10 btn-cancel" @click="resetForm">Batal</TheButton>
-						<div class="divider"></div>
-					</v-col>
-					<v-card-title class="text-h5">Cara Kerja Form</v-card-title>
-					<v-card-text>
-						Tujuan surat ini untuk pemberitahuan kepada client sebagai ajakan meeting
-					</v-card-text>
-				</v-card>
-			</v-col>
+			<v-card class="side-desc p-4" elevation="0">
+				<v-col class="d-flex flex-column p-0">
+					<TheButton class="mr-2 mb-3 btn-success" @click="submitForm">Lanjut</TheButton>
+					<TheButton class="mr-2 mb-4 btn-cancel" @click="resetForm">Batal</TheButton>
+				</v-col>
+
+				<div class="divider"></div>
+
+				<v-card-title class="text-h5 font-weight-bold">Cara Kerja Form</v-card-title>
+				<v-card-text>
+					Tujuan surat ini untuk pemberitahuan kepada client sebagai ajakan meeting.
+				</v-card-text>
+			</v-card>
+		</v-col>
 		</v-row>
 	</v-container>
 </template>
@@ -115,7 +117,6 @@ const submitForm = async () => {
 		snackbarStore.showSnackbar({ type: 'success', message: 'Berhasil memasukan project' });
 		resetForm();
 	} catch (error) {
-		console.error('Error submitting form:', error);
 		snackbarStore.showSnackbar({ type: 'error', message: 'Gagal memasukan project' });
 	}
 };
