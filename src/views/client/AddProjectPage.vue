@@ -1,6 +1,10 @@
 <template>
 	<v-container class="form-container">
 		<v-row>
+			<v-dialog v-model="toggle_date_pocker" persistent @click:outside="toggle_date_pocker = false">
+				<v-date-picker color="primary" v-model="date" @update:model-value="toggle_date_pocker = false; formattedDate = formattedDateFunc(date)" style="margin: auto; display: block;"></v-date-picker>
+			</v-dialog>
+
 			<v-col cols="12" class="text-center mb-9 mt-2">
 				<v-img src="@/assets/images/logo-kolab-aja.png" alt="Kolab Aja Logo" contain max-width="10rem"></v-img>
 			</v-col>
@@ -36,8 +40,9 @@
 					<v-card-title>3. Budget & Estimasi</v-card-title>
 					<v-card-text>
 						<p class="mt-5">Tentukan estimasi pengerjaan projectnya</p>
-						<v-text-field v-model="formattedDate" label="Tanggal Tenggat (YYYY-MM-DD)"
+						<v-text-field v-model="formattedDate" label="Tanggal Tenggat (YYYY-MM-DD)" @click="toggle_date_pocker = true;"
 							prepend-icon="mdi-calendar" :rules="dateRules" required />
+
 						<p>Tentukan budget projectnya</p>
 						<v-text-field type="number" v-model="projectBudget" label="Budget (Rp)" prepend-icon="mdi-cash"
 							required />
@@ -91,10 +96,12 @@ const projectSkill = ref([]);
 const projectDuration = ref(new Date());
 const projectBudget = ref("");
 const projectFiles = ref([]);
+const toggle_date_pocker = ref(false);
 
 const skills = ref([]);
+const date = ref();
 
-const formattedDate = computed(() => projectDuration.value.toISOString().slice(0, 10));
+const formattedDate = ref(projectDuration.value.toISOString().slice(0, 10));
 const dateRules = [date => !!date.match(/^\d{4}-\d{2}-\d{2}$/) || 'The date format must be YYYY-MM-DD'];
 
 onMounted(async () => {
@@ -102,6 +109,13 @@ onMounted(async () => {
 	await spesialisasiStore.getSpesialisasi();
 	skills.value = spesialisasiStore.data.map(values => values.nama);
 });
+
+function formattedDateFunc(date) {
+	if (date) {
+		let date_tmp = new Date(date);
+		return date_tmp.toISOString().split('T')[0]; // Formats as yyyy-mm-dd
+	}
+}
 
 const submitForm = async () => {
 	try {
@@ -131,7 +145,6 @@ const resetForm = () => {
 	router.push("/client/progress");
 };
 </script>
-
 
 <style scoped>
 * {
