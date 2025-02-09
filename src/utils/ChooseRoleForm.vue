@@ -14,8 +14,7 @@
 						<v-icon :icon="item.icon" size="x-large"
 							:color="selectedRoleId === item.roleId ? 'white' : ''"></v-icon>
 					</v-card-title>
-					<v-card-title :class="{ 'text-white': selectedRoleId === item.roleId }" class="text-h5">{{ item.name
-						}}</v-card-title>
+					<v-card-title :class="{ 'text-white': selectedRoleId === item.roleId }" class="text-h5">{{ item.name }}</v-card-title>
 					<v-card-text :class="selectedRoleId === item.roleId ? 'role-desc-active' : 'role-desc'">
 						{{ item.description }}
 					</v-card-text>

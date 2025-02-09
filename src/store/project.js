@@ -134,10 +134,11 @@ export const useProjectStore = defineStore("project", {
                 throw error;
             }
         },
-        async getProjectDetail(id) {
+        async updateInviteRequest(id_proyek, status_terima_proyek) {
             try {
-                const response = await fetchApi(`/api/invite-request`, {
-                    method: 'GET'
+                const response = await fetchApi(`/api/controller/invite-request/${id_proyek}`, {
+                    method: 'PATCH',
+                    params: {'status_terima_proyek': status_terima_proyek}
                 })
     
                 this.inviteRequestData = response
