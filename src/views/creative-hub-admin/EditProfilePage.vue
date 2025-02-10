@@ -93,7 +93,19 @@ const dataPengguna = ref({
 
 onMounted(async () => {
 	await profileStore.getProfile();
-	dataPengguna.value = profileStore.data.data_pengguna
+	const fetchedData = profileStore.data.data_pengguna || {};
+
+	dataPengguna.value = {
+    nama: fetchedData.nama ?? '',
+    lokasi: fetchedData.lokasi ?? '',
+    email: fetchedData.email ?? '',
+    alamat: fetchedData.alamat ?? '',
+    tag_line: fetchedData.tag_line ?? '',
+    website: fetchedData.website ?? '',
+    nomor_telepon: fetchedData.nomor_telepon ?? '',
+    profil_detail: fetchedData.profil_detail ?? ''
+  };
+
 });
 
 const back = () => {
@@ -139,11 +151,14 @@ const saveProfile = async () => {
 			errorWebsite.value === ""
 		) {
 			await profileStore.updateProfile(dataPengguna.value);
+			await profileStore.getProfile();
 			snackbarStore.showSnackbar({
 				type: "success",
 				message: "Data berhasil di update",
 				timeout: 5000,
 			});
+
+
 			router.push('/creative-hub-admin/profile');
 		} else {
 			throw new Error();
