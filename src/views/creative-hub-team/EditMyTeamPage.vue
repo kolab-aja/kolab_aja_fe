@@ -87,9 +87,9 @@
 						<TheVRow>
 							<TheVCol>
 								<TheInput custom-label="Nama" max-width="800" v-model="namaMember"/>
-								<TheInput custom-label="Expertise" max-width="800" v-model="expertiseMember"/>
 								<TheInputDropDown custom-label="Role" max-width="800" v-model="roleMember"
 												  :options="dialogOptions"/>
+								<TheInput custom-label="Expertise" max-width="800" v-model="expertiseMember"/>
 							</TheVCol>
 						</TheVRow>
 						<div class="d-flex justify-end">

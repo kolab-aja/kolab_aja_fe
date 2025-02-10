@@ -4,7 +4,7 @@
 			<TheVCol class="d-flex flex-column ga-8" max-width="1200">
 				<TheVRow class="d-flex align-center ga-4">
 					<v-avatar size="80" style="border: 2px solid #8A76D4">
-						<img :src="profileImage" alt="Profile Image" height="100%" />
+						<img src="@/assets/images/William.png" alt="Profile Image" height="100%" />
 					</v-avatar>
 					<TheVCol class="d-flex flex-column justify-center">
 						<p class="profile-name">{{ nama }}</p>
