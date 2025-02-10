@@ -20,7 +20,7 @@
 						v-model="nomorRekening"
 						:error-messages="errorNomorRekening"
 						minlength="10"
-						maxlength="10"
+						maxlength="15"
 						:disabled="!bank"
 						@keypress="isNumber($event)"
 					/>
