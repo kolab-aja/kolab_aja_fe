@@ -92,7 +92,7 @@
 			<v-row class="section d-flex justify-center">
 				<v-col cols="auto" class="text-center">
 					<v-img
-						src="@/assets/images/Sugiharto.png"
+						src="@/assets/images/Sugiharto1.png"
 						width="10rem"
 					></v-img>
 					<p class="title mt-4">Sugiharto</p>
@@ -100,7 +100,7 @@
 				</v-col>
 				<v-col cols="auto" class="text-center">
 					<v-img
-						src="@/assets/images/William.png"
+						src="@/assets/images/William1.png"
 						width="9.7rem"
 					></v-img>
 					<p class="title mt-4">William</p>
@@ -108,7 +108,7 @@
 				</v-col>
 				<v-col cols="auto" class="text-center">
 					<v-img
-						src="@/assets/images/Stevanny.png"
+						src="@/assets/images/Stevanny1.png"
 						width="10rem"
 					></v-img>
 					<p class="title mt-4">Stevanny Holanda</p>
@@ -116,7 +116,7 @@
 				</v-col>
 				<v-col cols="auto" class="text-center">
 					<v-img
-						src="@/assets/images/Jeksen.png"
+						src="@/assets/images/Jeksen1.png"
 						width="10rem"
 					></v-img>
 					<p class="title mt-4">Jeksen</p>
@@ -124,7 +124,7 @@
 				</v-col>
 				<v-col cols="auto" class="text-center">
 					<v-img
-						src="@/assets/images/Edbert.png"
+						src="@/assets/images/Edbert1.png"
 						width="10rem"
 					></v-img>
 					<p class="title mt-4">Edbert Fortino</p>

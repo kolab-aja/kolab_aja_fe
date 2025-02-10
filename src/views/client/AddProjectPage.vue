@@ -2,7 +2,7 @@
 	<v-container class="form-container">
 		<v-row>
 			<v-dialog v-model="toggle_date_pocker" persistent @click:outside="toggle_date_pocker = false">
-				<v-date-picker color="primary" v-model="date" @update:model-value="toggle_date_pocker = false; formattedDate = formattedDateFunc(date)" style="margin: auto; display: block;"></v-date-picker>
+				<v-date-picker color="primary" v-model="date" @update:model-value="toggle_date_pocker = false; formattedDate = formattedDateFunc(date); console.log(date)" style="margin: auto; display: block;"></v-date-picker>
 			</v-dialog>
 
 			<v-col cols="12" class="text-center mb-9 mt-2">
@@ -113,7 +113,8 @@ onMounted(async () => {
 function formattedDateFunc(date) {
 	if (date) {
 		let date_tmp = new Date(date);
-		return date_tmp.toISOString().split('T')[0]; // Formats as yyyy-mm-dd
+		date_tmp.setMinutes(date_tmp.getMinutes() - date_tmp.getTimezoneOffset());
+		return date_tmp.toISOString().split('T')[0];
 	}
 }
 
