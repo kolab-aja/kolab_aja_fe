@@ -64,8 +64,12 @@
 								style="max-width: 800px; padding: 15px 20px; outline: 1px solid #b2adff; border-radius: 10px">
 								<v-row no-gutters>
 									<v-col cols="2">
-										<v-avatar size="86"
-											src="@/assets/images/default-profile-team.png"></v-avatar>
+										<v-img
+											src="@/assets/images/default-profile-team.png"
+											alt="Kolab Aja Logo"
+											contain
+											max-width="86px"
+										></v-img>
 									</v-col>
 									<v-col cols="9">
 										<v-card-title class="d-flex justify-space-between align-center">
