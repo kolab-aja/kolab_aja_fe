@@ -109,6 +109,12 @@
                     // POP UP EDIT DESIGN BRIEF ( GET BRIEF DATA )
                 }
             }
+        } else if ( props.data.proyek_id_status_proyek == 3 ) {
+            return {
+                isDisabled: true,
+                icon: "mdi-pencil",
+                status: "edit-design-brief",
+            }
         }
     })
 
