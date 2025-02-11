@@ -70,7 +70,7 @@ const FetchTableData = async () => {
 		})
 		;
 		projectSetupItems.value = projectListStore.data.setup.filter(project =>
-			project.proyek_id_status_proyek == "1" || project.proyek_id_status_proyek == "2" || project.proyek_id_status_proyek == "3"
+			(project.proyek_id_status_proyek == "1" || project.proyek_id_status_proyek == "2" || project.proyek_id_status_proyek == "3") && project.status_terima_proyek == "1"
 		);
 		projectOnGoing.value = projectListStore.data.setup.filter(project =>
 			project.proyek_id_status_proyek == "4"

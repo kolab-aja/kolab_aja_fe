@@ -10,7 +10,7 @@
                         </div>
                     </td>
                     <td>
-                        <b>{{ item.proyek_judul_proyek }}</b>
+                        {{ item.proyek_judul_proyek }}
                     </td>
                     <td>
                         <IconButton :data="item" />
