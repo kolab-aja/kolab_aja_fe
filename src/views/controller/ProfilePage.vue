@@ -70,7 +70,7 @@
 				<v-divider />
 				<h2 style="font-size: 20px; font-family: 500">Expertise</h2>
 				<TheVRow max-width="600">
-					<v-chip v-for="index in expertise" :key="index">{{
+					<v-chip v-for="index in expertise" :key="index" style="padding-right: 4px">{{
 						index
 					}}</v-chip>
 				</TheVRow>

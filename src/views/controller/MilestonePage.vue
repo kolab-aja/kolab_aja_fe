@@ -23,7 +23,7 @@
 			<!-- Data Table -->
 			<v-data-table :items="data" :headers="headers" item-class="data-table-row">
 				<template v-slot:item="{ item }">
-					<tr v-on:click="detailMilestone(item.proyek_id)">
+					<tr v-on:click="detailMilestone(item.proyek_id)" @mouseover="" @mouseleave="">
 						<td class="padded-td">
 							<div class="flex-center">
 								<img :src="profileImage" alt="Profile Image" class="profile-picture"> {{ item.team_nama }}
@@ -102,5 +102,14 @@ onMounted( async () => {
 	border-radius: 50%;
 	margin-right: 10px;
 	border: 1px solid #8A76D4;
+}
+
+tr {
+	cursor: pointer; /* Makes the row look clickable */
+	transition: background-color 0.2s ease-in-out;
+}
+
+tr:hover {
+	background-color: rgba(0, 0, 0, 0.1); /* Slightly darker background on hover */
 }
 </style>
