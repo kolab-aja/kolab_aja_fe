@@ -6,16 +6,20 @@
 				<h2 style="color: white; font-size: 35px">Rekomendasi Controllers</h2>
 				<TheVCol class="d-flex align-center justify-center ga-3 mt-3">
 					<TheVCol max-width="800">
-						<TheInput prepend-inner-icon="mdi-search-web" placeholder="Cari controller	" bg-color="white"
+						<TheInput prepend-inner-icon="mdi-search-web" placeholder="Cari controller" bg-color="white"
 							v-model="keyword" style="height: 50px" />
 					</TheVCol>
-					<TheButton size="s" type="primary" @click="filterAction()" style="width: 90px">Cari</TheButton>
+					<TheButton size="s" type="primary" @click="filterAction()" style="width: 90px">
+						Cari
+					</TheButton>
 				</TheVCol>
 			</TheVRow>
 
 			<TheVRow style="margin: 20px 130px">
 				<TheVCol class="d-flex align-start">
-					<TheButton size="L" type="secondary" @click="goBack" style="width: 90px">Back</TheButton>
+					<TheButton size="L" type="secondary" @click="goBack" style="width: 90px">
+						Back
+					</TheButton>
 				</TheVCol>
 			</TheVRow>
 
@@ -23,17 +27,32 @@
 			<TheVRow style="margin: 60px 130px">
 				<TheVCol md="3" class="pr-10">
 					<p class="fill-card" style="font-size: 16px">Budget</p>
-					<v-checkbox multiple=multiple id="anggaran_semua" label="Semua" @click="checkBoxSemuaAction('anggaran')" v-model="fee" value="%" class="check"></v-checkbox>
-					<v-checkbox multiple=multiple id="anggaran" @click="checkBoxSingleAction('anggaran')" label="5%" v-model="fee" value="5|equ" class="check"></v-checkbox>
-					<v-checkbox multiple=multiple id="anggaran" @click="checkBoxSingleAction('anggaran')" label="15%" v-model="fee" value="15|equ" class="check"></v-checkbox>
-					<v-checkbox multiple=multiple id="anggaran" @click="checkBoxSingleAction('anggaran')" label="25%" v-model="fee" value="25|equ" class="check"></v-checkbox>
+					<v-checkbox multiple="multiple" id="anggaran_semua" label="Semua"
+						@click="checkBoxSemuaAction('anggaran')" v-model="fee" value="%" class="check"></v-checkbox>
+					<v-checkbox multiple="multiple" id="anggaran" @click="checkBoxSingleAction('anggaran')" label="5%"
+						v-model="fee" value="5|equ" class="check"></v-checkbox>
+					<v-checkbox multiple="multiple" id="anggaran" @click="checkBoxSingleAction('anggaran')" label="15%"
+						v-model="fee" value="15|equ" class="check"></v-checkbox>
+					<v-checkbox multiple="multiple" id="anggaran" @click="checkBoxSingleAction('anggaran')" label="25%"
+						v-model="fee" value="25|equ" class="check"></v-checkbox>
 					<v-divider class="custom-divider"></v-divider>
-					<p class="fill-card" style="font-size: 16px">Spesialisasi</p>
-					<v-checkbox multiple=multiple id="spesialisasi_semua" label="Semua" @click="checkBoxSemuaAction('spesialisasi')" v-model="spesialisasi" value="%" class="check"></v-checkbox>
-					<v-checkbox multiple=multiple id="spesialisasi" v-for="filter in filterSpesialisasi" :key="filter.nama" :label="filter.nama" @click="checkBoxSingleAction('spesialisasi')" v-model="spesialisasi" :value="filter.nama" class="check"></v-checkbox>
-					<v-divider class="custom-divider"></v-divider>
-					<TheButton size="s" type="primary" @click="filterAction()" style="width: 70px">Filter</TheButton>
+
+					<!-- Bagian spesialisasi hanya ditampilkan jika bukan mobile -->
+					<template v-if="!smAndDown">
+						<p class="fill-card" style="font-size: 16px">Spesialisasi</p>
+						<v-checkbox multiple="multiple" id="spesialisasi_semua" label="Semua"
+							@click="checkBoxSemuaAction('spesialisasi')" v-model="spesialisasi" value="%"
+							class="check"></v-checkbox>
+						<v-checkbox multiple="multiple" id="spesialisasi" v-for="filter in filterSpesialisasi"
+							:key="filter.nama" :label="filter.nama" @click="checkBoxSingleAction('spesialisasi')"
+							v-model="spesialisasi" :value="filter.nama" class="check"></v-checkbox>
+						<v-divider class="custom-divider"></v-divider>
+					</template>
+					<TheButton size="s" type="primary" @click="filterAction()" style="width: 70px">
+						Filter
+					</TheButton>
 				</TheVCol>
+
 				<TheVCol md="9" class="pl-5">
 					<v-card variant="text" v-for="item in items" :key="item.id_user">
 						<v-card-title class="d-flex">
@@ -44,11 +63,15 @@
 							<TheVRow class="d-flex flex-column ml-9">
 								<TheVCol class="d-flex justify-space-between">
 									<h5 style="font-size: 23px">{{ item.nama }}</h5>
-									<p class="fill-card">Budget: {{ item.fee ? `${item.fee} %` : 'N/A' }}</p>
+									<p class="fill-card">
+										Budget: {{ item.fee ? `${item.fee} %` : 'N/A' }}
+									</p>
 								</TheVCol>
 								<TheVCol class="d-flex align-center ga-1">
 									<v-icon icon="mdi-map-marker" size="s"></v-icon>
-									<p class="fill-card" style="font-weight: 400">{{ item.lokasi }}</p>
+									<p class="fill-card" style="font-weight: 400">
+										{{ item.lokasi }}
+									</p>
 								</TheVCol>
 							</TheVRow>
 						</v-card-title>
@@ -57,18 +80,23 @@
 								<div v-html="item.profil_detail ? item.profil_detail : 'No details available'"></div>
 							</div>
 							<div>
-								<v-chip class="fill-card chip" v-for="chip in item.spesialisasi" :key="chip">{{ chip
-									}}</v-chip>
+								<v-chip class="fill-card chip" v-for="chip in item.spesialisasi" :key="chip">
+									{{ chip }}
+								</v-chip>
 							</div>
 						</v-card-text>
 						<v-card-actions class="mt-2" style="padding: 0px 16px">
 							<TheVCol>
-								<p style="font-size: 13px"><strong>{{ item.projects_handled }}</strong> Handled Project | <strong>{{ item.completion_rate }}</strong>% Completion
+								<p style="font-size: 13px">
+									<strong>{{ item.projects_handled }}</strong> Handled Project |
+									<strong>{{ item.completion_rate }}</strong>% Completion
 								</p>
 							</TheVCol>
 							<TheVCol class="d-flex align-center justify-end ga-3">
 								<TheButton size="icon-l" type="primary-icon-2" icon="mdi-bookmark-outline" />
-								<TheButton size="l" type="primary" @click="goToDetail(item.id_user)">Apply</TheButton>
+								<TheButton size="l" type="primary" @click="goToDetail(item.id_user)">
+									Apply
+								</TheButton>
 							</TheVCol>
 						</v-card-actions>
 					</v-card>
@@ -77,8 +105,10 @@
 		</v-container>
 	</v-app>
 </template>
+
 <script setup>
 import { defineProps, ref, onMounted } from 'vue';
+import { useDisplay } from 'vuetify';
 import TheVCol from "@/components/common/TheVCol.vue";
 import TheVRow from "@/components/common/TheVRow.vue";
 import TheInput from "@/components/common/TheInput.vue";
@@ -87,6 +117,8 @@ import Navbar from "@/layouts/default/Navbar.vue";
 import { useRouter, useRoute } from 'vue-router';
 import { useControllerListStore } from "@/store/controllerList";
 import { useProjectStore } from '@/store/project';
+
+const { smAndDown } = useDisplay();
 
 const route = useRoute();
 const router = useRouter();
@@ -97,9 +129,7 @@ const keyword = ref("");
 const fee = ref([]);
 const spesialisasi = ref([]);
 const filterSpesialisasi = ref([
-	{
-		nama: "asda",
-	},
+	{ nama: "asda" }
 ]);
 
 onMounted(async () => {
@@ -111,39 +141,29 @@ const props = defineProps({
 });
 
 const idProject = route.params.id;
-
-const params = {
-
-};
+const params = {};
 
 function goToDetail(id) {
-	projectStore.updateIdProject(idProject)
+	projectStore.updateIdProject(idProject);
 	router.push({ name: 'client-controller-detail', params: { id } });
 }
 
 const goBack = () => {
-	router.push({
-		path: `/client/progress`,
-	});
-}
+	router.push({ path: `/client/progress` });
+};
 
 // Dummy data for example
 const items = ref([]);
 
 function checkBoxSemuaAction(filterType) {
-	if (filterType == "anggaran") {
+	if (filterType === "anggaran") {
 		if (fee.value.includes('%')) {
 			fee.value = [];
 		} else {
-			fee.value = [
-				'5|equ',
-				'15|equ',
-				'25|equ'
-			];
+			fee.value = ['5|equ', '15|equ', '25|equ'];
 		}
 	}
-
-	if (filterType == "spesialisasi") {
+	if (filterType === "spesialisasi") {
 		if (spesialisasi.value.includes('%')) {
 			spesialisasi.value = [];
 		} else {
@@ -153,20 +173,19 @@ function checkBoxSemuaAction(filterType) {
 }
 
 function checkBoxSingleAction(filterType) {
-	if (filterType == "anggaran") {
+	if (filterType === "anggaran") {
 		if (fee.value.includes('%')) {
 			let index = fee.value.indexOf('%');
-			if (index != -1) {
-				fee.value.splice(index, 1)
+			if (index !== -1) {
+				fee.value.splice(index, 1);
 			}
 		}
 	}
-
-	if (filterType == "spesialisasi") {
+	if (filterType === "spesialisasi") {
 		if (spesialisasi.value.includes('%')) {
 			let index = spesialisasi.value.indexOf('%');
-			if (index != -1) {
-				spesialisasi.value.splice(index, 1)
+			if (index !== -1) {
+				spesialisasi.value.splice(index, 1);
 			}
 		}
 	}
@@ -174,22 +193,14 @@ function checkBoxSingleAction(filterType) {
 
 function getFilter() {
 	params.value = {};
-	if (keyword.value != "") {
-		params.value["keyword"] = keyword.value
+	if (keyword.value !== "") {
+		params.value["keyword"] = keyword.value;
 	}
-	if (fee.value != null) {
-		if (Object.keys(fee.value).length && !fee.value.includes('%')
-			// && fee.value.sort().join("") != ['5|equ', '15|equ', '25|equ'].sort().join("")
-		) {
-			params.value["fee"] = fee.value
-		}
+	if (fee.value != null && Object.keys(fee.value).length && !fee.value.includes('%')) {
+		params.value["fee"] = fee.value;
 	}
-	if (spesialisasi.value != null) {
-		if (Object.keys(spesialisasi.value).length && !spesialisasi.value.includes('%')
-			// && spesialisasi.value.join("") != filterSpesialisasi.value.map(x => x.nama).sort().join("")
-		) {
-			params.value["spesialisasi"] = spesialisasi.value
-		}
+	if (spesialisasi.value != null && Object.keys(spesialisasi.value).length && !spesialisasi.value.includes('%')) {
+		params.value["spesialisasi"] = spesialisasi.value;
 	}
 }
 
@@ -199,8 +210,8 @@ async function filterAction() {
 	items.value = controllerListStore.data.list_controller;
 	filterSpesialisasi.value = controllerListStore.data.filter_spesialisasi;
 }
-
 </script>
+
 <style scoped>
 * {
 	font-family: "Outfit", sans-serif;
@@ -211,18 +222,14 @@ async function filterAction() {
 	top: 0;
 	width: 100%;
 	z-index: 1000;
-	background: linear-gradient(0deg,
-			rgba(0, 0, 0, 0.2) 0%,
-			rgba(0, 0, 0, 0.2) 100%),
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
 		linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
 		var(--primary-purple, #221943);
 }
 
 .nocth {
 	border-radius: 0px 0px 20px 20px;
-	background: linear-gradient(0deg,
-			rgba(0, 0, 0, 0.2) 0%,
-			rgba(0, 0, 0, 0.2) 100%),
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
 		linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
 		var(--primary-purple, #221943);
 }
