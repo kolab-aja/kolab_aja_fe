@@ -65,7 +65,7 @@
 								<v-row no-gutters>
 									<v-col cols="2">
 										<v-avatar size="86"
-											:src="`https://example.com/path-to-image/${application.cha_id}.jpg`"></v-avatar>
+											src="@/assets/images/default-profile-team.png"></v-avatar>
 									</v-col>
 									<v-col cols="9">
 										<v-card-title class="d-flex justify-space-between align-center">
