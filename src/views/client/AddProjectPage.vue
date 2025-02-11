@@ -2,7 +2,7 @@
 	<v-container class="form-container">
 		<v-row>
 			<v-dialog v-model="toggle_date_pocker" persistent @click:outside="toggle_date_pocker = false">
-				<v-date-picker color="primary" v-model="date" @update:model-value="toggle_date_pocker = false; formattedDate = formattedDateFunc(date); console.log(date)" style="margin: auto; display: block;"></v-date-picker>
+				<v-date-picker color="primary" v-model="date" :min="minDate" @update:model-value="toggle_date_pocker = false; formattedDate = formattedDateFunc(date); console.log(date)" style="margin: auto; display: block;"></v-date-picker>
 			</v-dialog>
 
 			<v-col cols="12" class="text-center mb-9 mt-2">
@@ -102,6 +102,8 @@ const skills = ref([]);
 const date = ref();
 
 const formattedDate = ref(projectDuration.value.toISOString().slice(0, 10));
+const minDate = ref(getLocalDateString(new Date()));
+
 const dateRules = [date => !!date.match(/^\d{4}-\d{2}-\d{2}$/) || 'The date format must be YYYY-MM-DD'];
 
 onMounted(async () => {
@@ -109,6 +111,13 @@ onMounted(async () => {
 	await spesialisasiStore.getSpesialisasi();
 	skills.value = spesialisasiStore.data.map(values => values.nama);
 });
+
+function getLocalDateString(dateObj) {
+	const year = dateObj.getFullYear();
+	const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
+	const day = dateObj.getDate().toString().padStart(2, "0");
+	return `${year}-${month}-${day}`;
+}
 
 function formattedDateFunc(date) {
 	if (date) {
