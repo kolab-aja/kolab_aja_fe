@@ -55,4 +55,12 @@ function detailMilestone (id) {
 
 }
 
+tr {
+	cursor: pointer; /* Makes the row look clickable */
+	transition: background-color 0.2s ease-in-out;
+}
+tr:hover {
+	background-color: rgba(0, 0, 0, 0.1); /* Slightly darker background on hover */
+}
+
 </style>
