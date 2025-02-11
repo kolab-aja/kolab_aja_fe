@@ -56,7 +56,8 @@
 										<TheVCol>
 											<TheInput append-inner-icon="mdi-percent" max-width="700"
 												custom-label="Presentase" placeholder="20" bg-color="white"
-												v-model="persentase" :error-messages="errorPersentase" />
+												v-model="persentase" :error-messages="errorPersentase"
+												@keypress="isNumber($event)" />
 										</TheVCol>
 										<TheVCol class="d-flex flex-column pa-0" style="height: min-content">
 											<label class="mb-2">Deadline</label>
@@ -82,7 +83,7 @@
 								<h6 style="font-weight: 400">
 									<!-- Perbaikan: konversi ke string sebelum slice -->
 									{{ mileStoneData?.proyek_anggaran ?
-										mileStoneData.proyek_anggaran.toString().slice(0, -3) + 'k' : '' }}
+									mileStoneData.proyek_anggaran.toString().slice(0, -3) + 'k' : '' }}
 								</h6>
 							</div>
 							<div class="mt-7">
@@ -193,6 +194,16 @@ const handlePublishButtonClick = () => {
 		errorSelectedDate.value = "";
 	}
 };
+
+function isNumber(event) {
+	const keysAllowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	let keyPressed = event.key;
+
+	if (!keysAllowed.includes(keyPressed)) {
+		event.preventDefault()
+	}
+}
+
 
 const handleSubmitForm = async () => {
 	if (
