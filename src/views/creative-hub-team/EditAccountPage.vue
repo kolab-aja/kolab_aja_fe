@@ -87,12 +87,17 @@ onMounted(async () => {
 const handleSubmit = async () => {
 	if (!errorName.value && !errorTelepon.value) {
 		try {
-			await profileStore.updateProfile({
+			let data = {
 				nama: name.value,
 				email: email.value,
 				nomor_telepon: telepon.value,
-				password: password.value
-			});
+			}
+
+			if (password.value) {
+				data['password'] = password.value
+			}
+
+			await profileStore.updateProfile(data);
 			await profileStore.getProfile();
 
 			snackbarStore.showSnackbar({
